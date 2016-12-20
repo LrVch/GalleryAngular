@@ -5,24 +5,32 @@ angular.module('galleryApp')
         return {
             restrict: 'E',
             // scope: {
-            //   info: '='
+            //     images: '=',
+            //     index: '=',
+            //     active: '='
             // },
             templateUrl: 'addsection/addsection.template.html',
             controller: function ($scope, $element) {
+                var count = 0;
+
                 $scope.addMore = function ($event) {
                     $event.preventDefault();
-                    console.log($scope)
-                    var el = $compile("<images images='initArray'></images>")($scope);
-                    $element.parent().append(el);
+
+                    ++$scope.activeIndex;
+
+                    count = $scope.activeIndex;
+
+                    if (!$scope.photos[count + 1]) {
+                        // return;
+                        $scope.showAddButton = false;
+                    }
+
+                    var el = $compile("<images images='photos[" + count + "]'></images>")($scope);
+                    var parent = $element.parent()[0].querySelector(".additional-sections");
+                    var angParent = angular.element(parent);
+
+                    angParent.append(el);
                 };
             }
-            // link: function(scope, element, attrs) {
-            //   scope.addMore = function($event) {
-            //     $event.preventDefault();
-            //     element.append("<book></book>")
-            //   }
-
-
-            // }
         }
     });

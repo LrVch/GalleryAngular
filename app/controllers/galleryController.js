@@ -3,15 +3,15 @@
 angular.module('galleryApp')
     .controller('galleryController', ['$scope', 'Photo', function ($scope, Photo) {
 
-        self.phone = Photo.get({}, function (photos) {
-            // $scope.popupState.images = photos.entries;
-            // console.log($scope.popupState.images)
-            // console.log(modifyData(photos.entries));
+        $scope.activeIndex = 0;
+        $scope.showAddButton = false;
+
+
+        self.photo = Photo.get({}, function (photos) {
             $scope.photos = modifyData(photos.entries);
             $scope.initArray = $scope.photos[0];
+            $scope.showAddButton = true;
         });
-
-        $scope.sectionCount = 1;
 
         $scope.popupState = {
             show: false,
