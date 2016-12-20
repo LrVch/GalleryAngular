@@ -55,6 +55,8 @@ angular.module('galleryApp')
                         scope.imageIndex = scope.state.index;
                         element.addClass('show');
                         scope.img = scope.state.images[scope.state.index].img.XXL.href;
+                        scope.autor = scope.state.images[scope.state.index].authors[0].name;
+                        scope.title = scope.state.images[scope.state.index].title;
 
                         loadingImg(scope.state.images[scope.state.index].img.XXL.href)
                             .then(function (resolve) {
@@ -105,6 +107,8 @@ angular.module('galleryApp')
                     scope.imageIndex++;
 
                     scope.img = images[scope.imageIndex].img.XXL.href;
+                    scope.autor = images[scope.imageIndex].authors[0].name;
+                    scope.title = images[scope.imageIndex].title;
 
                     loadingImg(images[scope.imageIndex].img.XXL.href)
                         .then(function (resolve) {
@@ -133,6 +137,8 @@ angular.module('galleryApp')
                     scope.imageIndex--;
 
                     scope.img = images[scope.imageIndex].img.XXL.href;
+                    scope.autor = images[scope.imageIndex].authors[0].name;
+                    scope.title = images[scope.imageIndex].title;
 
                     loadingImg(images[scope.imageIndex].img.XXL.href)
                         .then(function (resolve) {

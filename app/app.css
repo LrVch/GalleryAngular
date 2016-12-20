@@ -229,3 +229,14 @@ popup.preloader .popup__img  {
 .popup__next {
     right: 0;
 }
+
+.popup__capture {
+    position: absolute;
+    z-index: 69;
+    right: 0;
+    bottom: 0;
+    padding: 20px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 20px;
+}

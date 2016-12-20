@@ -10,7 +10,11 @@
             <a class="popup__prev" href="#" ng-click="showPrev($event)">
                 <span>prev</span></a>
             <a class="popup__close" href="#" ng-click="hidePopup($event)"></a>
-
+            <p class="popup__capture">
+                {{ autor }}
+                <br>
+                {{ title }}
+            </p>
         </div>
     </div>
     <div class="popup__overlay" ng-click="hidePopup($event)"></div>

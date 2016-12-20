@@ -21,6 +21,8 @@ angular.module('galleryApp')
             $scope.initArray = $scope.photos[0];
             $scope.showAddButton = true;
 
+            console.log($scope.photos)
+
             addImagesToPopupView($scope.initArray);
         });
 
