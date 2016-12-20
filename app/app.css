@@ -88,8 +88,22 @@ popup.show {
     display: block;
 }
 
-popup.preloader .popup  {
-    background: red;
+popup.preloader .popup__preloader  {
+    display: block;
+}
+
+popup.preloader .popup__img  {
+    opacity: 0;
+}
+
+.popup__preloader {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #000 url("img/wheel.svg") no-repeat center;
 }
 
 .popup {

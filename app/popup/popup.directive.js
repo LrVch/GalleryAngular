@@ -13,20 +13,44 @@ angular.module('galleryApp')
 
                 scope.preloader = false;
 
-                console.log(scope);
+                // console.log(scope);
+
+                function loadingImg(url) {
+                    return new Promise(function (resolve, reject) {
+                        var img = document.createElement("img");
+                        img.src = url;
+
+                        console.log(img.complete)
+                        console.log(img.naturalWidth)
+
+                        if (img.complete && img.naturalWidth !== 0) {
+                            return;
+                        }
+
+                        scope.showPreloader();
+                        img.onload = function () {
+                            resolve();
+                        };
+
+                        img.error = function () {
+                            reject();
+                        };
+                    });
+                }
 
                 scope.$watch('state.show', function (newval, oldval) {
                     if (newval) {
                         scope.imageIndex = scope.state.index;
                         element.addClass('show');
-                        // setTimeout(function() {
-                        //     if (!scope.myMethod()) {
-                        //         scope.showPreloader();
-                        //     }
-                        // }, 0);
-                        // console.log(scope);
-                        // console.log(scope.state.images.length);
                         scope.img = scope.state.images[scope.state.index].img.XXL.href;
+
+
+                        loadingImg(scope.state.images[scope.state.index].img.XXL.href)
+                            .then(function (resolve) {
+                                // console.log(scope);
+                                scope.hidePreloader();
+                            });
+                        
 
                         if (scope.state.index === 0) {
                             element[0].querySelector(".popup__prev").classList.add("hide");
@@ -38,8 +62,10 @@ angular.module('galleryApp')
                     } else {
                         element.removeClass('show');
                         scope.img = "#";
+                        // console.log("#")
                     }
                 });
+
 
                 scope.hidePopup = function ($event) {
                     $event.preventDefault();
@@ -60,16 +86,19 @@ angular.module('galleryApp')
                     }
 
                     if (scope.imageIndex > images.length - 2) {
-                        console.log(element[0])
+                        // console.log(element[0]);
                         return;
                     }
 
-
                     scope.imageIndex++;
 
-
-                    console.log(scope.imageIndex);
                     scope.img = images[scope.imageIndex].img.XXL.href;
+
+                    loadingImg(images[scope.imageIndex].img.XXL.href)
+                        .then(function (resolve) {
+                            // console.log(scope);
+                            scope.hidePreloader();
+                        });
 
                     // setTimeout(function () {
                     //     if (!scope.myMethod()) {
@@ -95,9 +124,14 @@ angular.module('galleryApp')
 
                     scope.imageIndex--;
 
-
-                    console.log(scope.imageIndex)
                     scope.img = images[scope.imageIndex].img.XXL.href;
+
+                    loadingImg(images[scope.imageIndex].img.XXL.href)
+                        .then(function (resolve) {
+                            console.log(scope);
+                            scope.hidePreloader();
+                        });
+
 
 
                     // setTimeout(function () {
@@ -115,14 +149,6 @@ angular.module('galleryApp')
                 scope.hidePreloader = function () {
                     element.removeClass('preloader');
                 };
-
-                // scope.showImage = function (value) {
-                //     if (value) {
-                //         scope.hidePreloader();
-                //     } else {
-                //         // console.log(value);
-                //     }
-                // };
             }
         }
     });
