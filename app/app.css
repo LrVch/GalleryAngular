@@ -60,6 +60,16 @@
     background: #000;
 }
 
+.add-more:focus {
+    text-decoration: none;
+    color: #000;
+}
+
+.add-more:focus:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
 .add-more.show {
     display: block;
 }
