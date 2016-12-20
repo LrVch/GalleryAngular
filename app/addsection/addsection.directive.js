@@ -4,11 +4,6 @@ angular.module('galleryApp')
     .directive('addSection', function ($compile) {
         return {
             restrict: 'E',
-            // scope: {
-            //     images: '=',
-            //     index: '=',
-            //     active: '='
-            // },
             templateUrl: 'addsection/addsection.template.html',
             controller: function ($scope, $element) {
                 var count = 0;

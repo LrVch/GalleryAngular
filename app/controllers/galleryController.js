@@ -6,17 +6,8 @@ angular.module('galleryApp')
         $scope.activeIndex = 0;
         $scope.showAddButton = false;
 
-
-        self.photo = Photo.get({}, function (photos) {
-            $scope.photos = modifyData(photos.entries);
-            $scope.initArray = $scope.photos[0];
-            $scope.showAddButton = true;
-            // console.log(photos)
-        });
-
-        // сформировать массив для простотра в попапе
-
         $scope.popupState = {
+            images: [],
             show: false,
             index: 0,
             showFn: function () {
@@ -25,9 +16,29 @@ angular.module('galleryApp')
             }
         };
 
+        self.photo = Photo.get({}, function (photos) {
+            $scope.photos = modifyData(photos.entries);
+            $scope.initArray = $scope.photos[0];
+            $scope.showAddButton = true;
+
+            addImagesToPopupView($scope.initArray);
+        });
+
+        
+        $scope.$watch('activeIndex', function (newval, oldval) {
+            if (newval) {
+                addImagesToPopupView($scope.photos[newval]);
+            }
+        });
+
+
         $scope.showPop = function () {
             $scope.popupState.show = true;
         };
+
+        function addImagesToPopupView(arr) {
+            $scope.popupState.images = $scope.popupState.images.concat(arr);
+        }
 
         function modifyData(arr) {
             const result = [];

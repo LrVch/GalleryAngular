@@ -1,0 +1,11 @@
+<div class="popup">
+    <div class="popup__inner {{ preloader ? 'preloader' : '' }}">
+        <!-- <div ng-class="{'popup__inner preloader': preloader === true, 'popup__inner': preloader === false}"> -->
+        <img ng-src="{{ img }}" imageonload="showImage" isImageLoaded>
+
+        <a href="#" ng-click="showNext($event)">Show next</a>
+        <a href="#" ng-click="showPrev($event)">Show prev</a>
+        <a href="#" ng-click="hidePopup()">close</a>
+    </div>
+
+</div>
