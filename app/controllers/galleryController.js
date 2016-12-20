@@ -11,7 +11,10 @@ angular.module('galleryApp')
             $scope.photos = modifyData(photos.entries);
             $scope.initArray = $scope.photos[0];
             $scope.showAddButton = true;
+            // console.log(photos)
         });
+
+        // сформировать массив для простотра в попапе
 
         $scope.popupState = {
             show: false,

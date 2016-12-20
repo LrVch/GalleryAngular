@@ -25,7 +25,7 @@ angular.module('galleryApp')
                         $scope.showAddButton = false;
                     }
 
-                    var el = $compile("<images images='photos[" + count + "]'></images>")($scope);
+                    var el = $compile("<images images='photos[" + count + "]' index='" + count * 18 + "' state='popupState'></images>")($scope);
                     var parent = $element.parent()[0].querySelector(".additional-sections");
                     var angParent = angular.element(parent);
 
