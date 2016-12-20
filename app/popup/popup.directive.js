@@ -27,23 +27,40 @@ angular.module('galleryApp')
                         // console.log(scope);
                         // console.log(scope.state.images.length);
                         scope.img = scope.state.images[scope.state.index].img.XXL.href;
+
+                        if (scope.state.index === 0) {
+                            element[0].querySelector(".popup__prev").classList.add("hide");
+                        }
+
+                        if (scope.state.index === scope.state.images.length - 1) {
+                            element[0].querySelector(".popup__next").classList.add("hide");
+                        }
                     } else {
                         element.removeClass('show');
                         scope.img = "#";
                     }
                 });
 
-                scope.hidePopup = function () {
+                scope.hidePopup = function ($event) {
+                    $event.preventDefault();
                     scope.state.show = false;
                     scope.state.showFn();
+                    element[0].querySelector(".popup__next").classList.remove("hide");
+                    element[0].querySelector(".popup__prev").classList.remove("hide");
                 };
 
                 scope.showNext = function ($event) {
                     $event.preventDefault();
 
                     const images = scope.state.images;
+                    element[0].querySelector(".popup__prev").classList.remove("hide");
+
+                    if (scope.imageIndex > images.length - 3) {
+                        element[0].querySelector(".popup__next").classList.add("hide");
+                    }
 
                     if (scope.imageIndex > images.length - 2) {
+                        console.log(element[0])
                         return;
                     }
 
@@ -65,6 +82,12 @@ angular.module('galleryApp')
                     $event.preventDefault();
 
                     const images = scope.state.images;
+                    element[0].querySelector(".popup__next").classList.remove("hide");
+
+
+                    if (scope.imageIndex < 2) {
+                        element[0].querySelector(".popup__prev").classList.add("hide");
+                    }
 
                     if (scope.imageIndex < 1) {
                         return;

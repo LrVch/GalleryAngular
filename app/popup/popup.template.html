@@ -1,11 +1,17 @@
 <div class="popup">
-    <div class="popup__inner {{ preloader ? 'preloader' : '' }}">
-        <!-- <div ng-class="{'popup__inner preloader': preloader === true, 'popup__inner': preloader === false}"> -->
-        <img ng-src="{{ img }}" imageonload="showImage" isImageLoaded>
+    <div class="popup__inner">
+        <div class="popup__content">
+            <div class="popup__img" style="background-image: url('{{ img }}')"></div>
+            <!--<img class="popup__img" ng-src="{{ img }}" imageonload="showImage"-->
+                 <!--isImageLoaded>-->
 
-        <a href="#" ng-click="showNext($event)">Show next</a>
-        <a href="#" ng-click="showPrev($event)">Show prev</a>
-        <a href="#" ng-click="hidePopup()">close</a>
+            <a class="popup__next" href="#" ng-click="showNext($event)">
+                <span>next</span></a>
+            <a class="popup__prev" href="#" ng-click="showPrev($event)">
+                <span>prev</span></a>
+            <a class="popup__close" href="#" ng-click="hidePopup($event)"></a>
+
+        </div>
     </div>
-
+    <div class="popup__overlay" ng-click="hidePopup($event)"></div>
 </div>
