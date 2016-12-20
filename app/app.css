@@ -1,0 +1,43 @@
+.item {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.item:hover .item__author {
+    bottom: 0;
+    color: #fff;
+    background: rgba(0,0,0, .9);
+}
+
+.item:hover .item__img {
+    opacity: .8;
+}
+
+.item__link {
+    text-decoration: none;
+}
+
+.item__link:hover {
+    text-decoration: none;
+}
+
+
+.item__img {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: opacity .3s;
+}
+
+.item__author {
+    position: absolute;
+    bottom: -100%;
+    width: 100%;
+    color: #000;
+    margin: 0;
+    padding: 24px;
+    text-align: left;
+    transition: bottom .2s, background .5s;
+}

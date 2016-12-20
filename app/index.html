@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="galleryApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My AngularJS App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+          href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div class="header">
+    <div class="container">
+        <a href="#">
+            <img src="http://vignette2.wikia.nocookie.net/transformers/images/b/bc/Autobot_logo.svg/revision/latest?cb=20130503211304"
+                 width="80" height="80"> Logo
+        </a>
+    </div>
+</div>
+
+<div class="main" ng-controller="galleryController">
+    <div class="container">
+
+        <images images="initArray"></images>
+
+        <add-section></add-section>
+
+    </div>
+    <!--<popup state="popupState"></popup>-->
+</div>
+
+
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="app.module.js"></script>
+<script src="app.config.js"></script>
+<script src="controllers/galleryController.js"></script>
+<script src="core/core.module.js"></script>
+<script src="core/photo/photo.module.js"></script>
+<script src="core/photo/photo.service.js"></script>
+<script src="images/images.directive.js"></script>
+<script src="addsection/addsection.directive.js"></script>
+</body>
+</html>
