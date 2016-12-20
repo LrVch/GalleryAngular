@@ -11,8 +11,8 @@ angular.module('galleryApp')
             show: false,
             index: 0,
             showFn: function () {
-                console.log("this.show", this.show);
-                console.log("this.index", this.index);
+                // console.log("this.show", this.show);
+                // console.log("this.index", this.index);
             }
         };
 

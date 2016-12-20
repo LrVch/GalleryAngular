@@ -2,7 +2,7 @@
 
 
 angular.module('galleryApp')
-    .directive('popup', function () {
+    .directive('popup', ['hotkeys', function (hotkeys) {
         return {
             restrict: 'E',
             scope: {
@@ -13,15 +13,27 @@ angular.module('galleryApp')
 
                 scope.preloader = false;
 
-                // console.log(scope);
+                hotkeys.add({
+                    combo: 'left',
+                    description: 'This one goes to left',
+                    callback: function() {
+                        scope.showPrev();
+                    }
+                });
+
+                hotkeys.add({
+                    combo: 'right',
+                    description: 'This one goes to right',
+                    callback: function() {
+                        scope.showNext();
+                    }
+                });
+
 
                 function loadingImg(url) {
                     return new Promise(function (resolve, reject) {
                         var img = document.createElement("img");
                         img.src = url;
-
-                        console.log(img.complete)
-                        console.log(img.naturalWidth)
 
                         if (img.complete && img.naturalWidth !== 0) {
                             return;
@@ -44,7 +56,6 @@ angular.module('galleryApp')
                         element.addClass('show');
                         scope.img = scope.state.images[scope.state.index].img.XXL.href;
 
-
                         loadingImg(scope.state.images[scope.state.index].img.XXL.href)
                             .then(function (resolve) {
                                 // console.log(scope);
@@ -62,7 +73,6 @@ angular.module('galleryApp')
                     } else {
                         element.removeClass('show');
                         scope.img = "#";
-                        // console.log("#")
                     }
                 });
 
@@ -76,7 +86,9 @@ angular.module('galleryApp')
                 };
 
                 scope.showNext = function ($event) {
-                    $event.preventDefault();
+                    if ($event) {
+                        $event.preventDefault();
+                    }
 
                     const images = scope.state.images;
                     element[0].querySelector(".popup__prev").classList.remove("hide");
@@ -99,16 +111,12 @@ angular.module('galleryApp')
                             // console.log(scope);
                             scope.hidePreloader();
                         });
-
-                    // setTimeout(function () {
-                    //     if (!scope.myMethod()) {
-                    //         scope.showPreloader();
-                    //     }
-                    // }, 0);
                 };
 
                 scope.showPrev = function ($event) {
-                    $event.preventDefault();
+                    if ($event) {
+                        $event.preventDefault();
+                    }
 
                     const images = scope.state.images;
                     element[0].querySelector(".popup__next").classList.remove("hide");
@@ -131,15 +139,6 @@ angular.module('galleryApp')
                             console.log(scope);
                             scope.hidePreloader();
                         });
-
-
-
-                    // setTimeout(function () {
-                    //     if (!scope.myMethod()) {
-                    //         scope.showPreloader();
-                    //     }
-                    // }, 0);
-
                 };
 
                 scope.showPreloader = function () {
@@ -151,4 +150,4 @@ angular.module('galleryApp')
                 };
             }
         }
-    });
+    }]);
