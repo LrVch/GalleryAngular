@@ -1,13 +1,12 @@
 <div class="row">
     <div class="item col-xs-6 col-sm-4 col-md-2" ng-repeat="image in images">
         <a href="#" class="item__link" ng-click="showPopup($event, $index)">
-            <div style="height: 150px; background-image: url('{{ image.img.M.href }}')" class="item__img"></div>
+            <div style=" background-image: url('{{ image.img.M.href }}')" class="item__img"></div>
             <p class="item__author">
                 {{ image.authors[0].name }}
                 <br>
                 {{ image.title }}
             </p>
-
         </a>
     </div>
 </div>

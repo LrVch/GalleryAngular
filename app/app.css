@@ -20,6 +20,8 @@ body {
 }
 
 .item__link {
+    display: block;
+    padding: 1px;
     text-decoration: none;
 }
 
@@ -29,6 +31,7 @@ body {
 
 
 .item__img {
+    padding-bottom: 80%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
