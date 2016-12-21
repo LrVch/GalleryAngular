@@ -11,7 +11,8 @@ var gulp = require("gulp"),
     filter = require("gulp-filter"),
     wiredep = require("wiredep").stream,
     useref = require("gulp-useref"),
-    size = require("gulp-size");
+    size = require("gulp-size"),
+    templateCache = require('gulp-angular-templatecache');
 
 
 
@@ -20,6 +21,16 @@ var gulp = require("gulp"),
 //   DEV
 // * ====================================================== *
 
+
+// cash-templates
+// *****************************************************
+gulp.task('cash-templates', function () {
+    return gulp.src(RS_CONF.path.templatesDir + '/*.html')
+        .pipe(templateCache({
+            root: "templates/"
+        }))
+        .pipe(gulp.dest(RS_CONF.path.templatesDir));
+});
 
 
 // autoprefixer
@@ -67,7 +78,7 @@ gulp.task("wiredep-bower", function () {
 
 // browsersync front-end
 // ******************************************************
-gulp.task("server", ["autoprefixer", "wiredep-bower"], function () {
+gulp.task("server", ["autoprefixer", "wiredep-bower", "cash-templates"], function () {
 
     browserSync.init({
         port: 9000,
@@ -82,6 +93,7 @@ gulp.task("server", ["autoprefixer", "wiredep-bower"], function () {
     gulp.watch(RS_CONF.path.cssDir, ["autoprefixer"]).on("change", browserSync.reload);
     gulp.watch(RS_CONF.path.htmlDir).on("change", browserSync.reload);
     gulp.watch(RS_CONF.path.jsDir).on("change", browserSync.reload);
+    gulp.watch(RS_CONF.path.templatesDir + "/*.html", ["cash-templates"]);
 
 });
 
@@ -114,8 +126,6 @@ gulp.task("useref", function () {
         .pipe(gulp.dest(RS_CONF.path.distDir));
 });
 
-
-
 // Очищаем директорию DIST
 // ******************************************************
 gulp.task("clean-dist", function () {
@@ -129,14 +139,6 @@ gulp.task("images", function () {
         // .pipe(filter(["*.jpg", "*.svg", "*.jpeg", "*.png", "*.webp", "*.gif"]))
         .pipe(gulp.dest(RS_CONF.path.distImgDir));
 });
-
-// Перенос остальных файлов (favicon и т.д.)
-// ******************************************************
-// gulp.task("extras", function () {
-//     return gulp.src(RS_CONF.path.extraFiles)
-//         .pipe(gulp.dest(RS_CONF.path.distDir));
-// });
-
 
 // Вывод размера папки APP
 // ******************************************************

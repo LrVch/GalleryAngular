@@ -18,6 +18,7 @@
             iconDir: baseDir + "/img/",
             extraFiles: [baseDir + "/*.*", "!" + baseDir + "/*.html"],
             allAppFiles: baseDir + "/**/*",
+            templatesDir: baseDir + "/templates",
             
             // Dist
             distDir: distBaseDir,

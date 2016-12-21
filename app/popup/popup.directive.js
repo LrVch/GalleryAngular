@@ -8,7 +8,7 @@ angular.module('galleryApp')
             scope: {
                 state: "="
             },
-            templateUrl: 'popup/popup.template.html',
+            templateUrl: 'templates/popup.template.html',
             link: function (scope, element, attrs) {
 
                 scope.preloader = false;

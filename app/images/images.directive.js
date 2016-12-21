@@ -9,7 +9,7 @@ angular.module('galleryApp')
                 index: "=",
                 state: "="
             },
-            templateUrl: 'images/images.template.html',
+            templateUrl: 'templates/images.template.html',
             link: function (scope, element, attrs) {
 
                 scope.showPopup = function showPopup($event, index) {
