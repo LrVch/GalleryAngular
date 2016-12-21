@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="galleryApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My AngularJS App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="vendor.min.css">
+
+    <link rel="stylesheet" href="style.min.css">
+
+</head>
+<body>
+<div class="header">
+    <div class="container">
+        <a href="#">
+            <img src="http://vignette2.wikia.nocookie.net/transformers/images/b/bc/Autobot_logo.svg/revision/latest?cb=20130503211304"
+                 width="80" height="80">
+        </a>
+    </div>
+</div>
+
+<div class="main" ng-controller="galleryController">
+    <div class="container">
+
+        <images images="initArray" index="0" state="popupState"></images>
+
+        <div class="additional-sections"></div>
+
+        <add-section images="photos" index="activeIndex"
+                     active="showAddButton"></add-section>
+
+
+    </div>
+    <popup state="popupState"></popup>
+</div>
+
+<script src="js/vendor.min.js"></script>
+
+<script src="js/script.min.js"></script>
+</body>
+</html>
