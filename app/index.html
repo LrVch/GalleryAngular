@@ -6,9 +6,17 @@
     <title>My AngularJS App</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet"
-          href="bower_components/bootstrap/dist/css/bootstrap.css">
+
+    <!-- build:css vendor.min.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css style.min.css -->
     <link rel="stylesheet" href="app.css">
+    <!-- endbuild -->
+
 </head>
 <body>
 <div class="header">
@@ -35,10 +43,15 @@
     <popup state="popupState"></popup>
 </div>
 
+<!-- build:js js/vendor.min.js -->
+<!-- bower:js -->
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-resource/angular-resource.min.js"></script>
+<script src="bower_components/angular-hotkeys/build/hotkeys.min.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
 
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-resource/angular-resource.js"></script>
-<script src="bower_components/angular-hotkeys/build/hotkeys.js"></script>
+<!-- build:js js/script.min.js -->
 <script src="app.module.js"></script>
 <script src="app.config.js"></script>
 <script src="controllers/galleryController.js"></script>
@@ -48,5 +61,6 @@
 <script src="images/images.directive.js"></script>
 <script src="addsection/addsection.directive.js"></script>
 <script src="popup/popup.directive.js"></script>
+<!-- endbuild -->
 </body>
 </html>
